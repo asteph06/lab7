@@ -43,11 +43,13 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, resp) {
-	resp.header("Access-Control-Allow-Origin");
-	resp.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//	resp.header("Access-Control-Allow-Origin");
+//	resp.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	var url = "http://developer.mbta.com/lib/rthr/red.json";
 	request(url,function(error,respy,body){
 		obj = JSON.parse(body);
+		resp.header("Access-Control-Allow-Origin","*");
+		resp.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 		resp.send(obj);
 	});
 });
