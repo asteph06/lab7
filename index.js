@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 var requests = require('requests');
-var bodyParser = require('bodyParser');
+var bodyParser = require('body-parser');
 
 console.log("hello world!!!");
 
